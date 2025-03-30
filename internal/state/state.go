@@ -54,7 +54,7 @@ func Init(path string) (*DB, error) {
 func (db *DB) SaveResult(result CheckResult) error {
 	_, err := db.conn.Exec(
 		`INSERT INTO results (name, type, status, message, timestamp) VALUES (?, ?, ?, ?, ?)`,
-		result.Name, result.Type, result.Status, result.Message, result.Timestamp,
+		result.Name, result.Type, result.Status, result.Message, result.Timestamp.Format(time.RFC3339Nano),
 	)
 	return err
 }
