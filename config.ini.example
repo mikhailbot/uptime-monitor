@@ -1,0 +1,28 @@
+[check "HTTP Example"]
+type = http
+target = https://example.com
+interval = 10s
+timeout = 5s
+expect_status = 200
+
+[check "Example Keyword"]
+type = keyword
+target = https://example.com
+interval = 10s
+timeout = 5s
+keyword = "keyword"
+
+[check "test-bad-server"]
+type = http
+target = http://localhost:8080
+interval = 2s
+timeout = 1s
+expect_status = 200
+
+[alert "email"]
+enabled = false
+to = alerts@example.com
+from = notifications@example.com
+smtp = smtp.example.com:587
+username = notifications@example.com
+password = abcdefgh01234567890
