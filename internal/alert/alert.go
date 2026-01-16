@@ -19,9 +19,9 @@ type AlertPayload struct {
 
 func DownPayload(checkName, target string, checkType string) AlertPayload {
 	return AlertPayload{
-		Subject: fmt.Sprintf("ALERT: %s is DOWN", checkName),
+		Subject: fmt.Sprintf("ALERT: %s", checkName),
 		Body: fmt.Sprintf(`
-			<h2 style="color: #c10007;">%s is DOWN</h2>
+			<h2 style="color: #c10007;">%s is currenly unavailable</h2>
 			<p>The check for <strong>%s</strong> has failed <strong>3 times in a row</strong>.</p>
 			<p>Target: <a href="%s">%s</a><br>
 			Alert Type: <strong>%s</strong></p>
@@ -33,9 +33,9 @@ func DownPayload(checkName, target string, checkType string) AlertPayload {
 
 func UpPayload(checkName, target string, checkType string) AlertPayload {
 	return AlertPayload{
-		Subject: fmt.Sprintf("RECOVERED: %s is UP", checkName),
+		Subject: fmt.Sprintf("RECOVERED: %s", checkName),
 		Body: fmt.Sprintf(`
-			<h2 style="color: #00a63e;">%s is UP</h2>
+			<h2 style="color: #00a63e;">%s is back online</h2>
 			<p>The check for <strong>%s</strong> has recovered after <strong>3 consecutive successes</strong>.</p>
 			<p>Target: <a href="%s">%s</a><br>
 			Alert Type: <strong>%s</strong></p>
